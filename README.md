@@ -5,7 +5,7 @@ This web application provides users with real-time UV ray index information base
 
 ## Screenshots
 # Landing Page
-![Screenshot 2024-08-14 231147](https://github.com/user-attachments/assets/168e4e4c-5d85-49bc-bde0-d3d76bc8e262)
+![Screenshot 2024-08-14 234207](https://github.com/user-attachments/assets/c7e96f46-dad8-47d0-8ca0-81fd3bd91f65)
 
 # Giving Input
 ![Screenshot 2024-08-14 231159](https://github.com/user-attachments/assets/98ad54eb-acf8-4fc7-9fc2-76c2619b0513)
