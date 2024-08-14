@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Capstone Project</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <h1>Check the UV of your Place</h1>
+    <div class="container">
+        <form action="/" method="post">
+            <label for="lat">Enter the Latitude, from -90.00 to 90.00:</label>
+            <input type="text" name="lat" id="lat" inputmode="decimal">
+            <label for="lon">Enter the Longitude, from -180.00 to 180.00:</label>
+            <input type="text" name="lon" id="lon" inputmode="decimal">
+            <input type="submit" value="Check UV" id="submit">
+            <button  onclick="getloc()">Use Current Location</button>
+        </form>
+    </div>
+    
+    
+        <% if(locals.UV){ %>
+            <div class="result">
+            UV of the Area is <%= UV %>.
+            <% if(UV>=0 && UV<=2){ %> 
+                Sunscreen is generally not necessary, especially if you're going to be outdoors for a short period.However, if you have sensitive skin or are prone to sunburn, you might consider using a low SPF sunscreen.
+            <% } else if(UV>2 && UV<=5) { %>
+                Apply a broad-spectrum sunscreen with at least SPF 15 if you plan to be outdoors. It's also a good idea to wear protective clothing, sunglasses, and a wide-brimmed hat.
+            <% } else if(UV>5 && UV<=8) {%>
+                Use a broad-spectrum sunscreen with SPF 30 or higher. Reapply every two hours, or more often if you're sweating or swimming. Seek shade and wear protective clothing to minimize sun exposure.
+            <% } else if(UV>8) {%>
+                Apply a broad-spectrum sunscreen with SPF 30 or higher. Reapply every two hours, and possibly more frequently if you're sweating or swimming. It's crucial to seek shade, wear protective clothing, and limit outdoor activities, especially during peak sunlight hours between 10 a.m. and 4 p.m.
+            <% } %>
+            </div>
+        <% } else{%>
+            <div class="result">
+                Waiting for Response!!!
+            </div>
+        <% } %>
+   
+
+
+        <script>
+            function handleLocation(position) {
+                document.getElementById("lat").value = position.coords.latitude;
+                document.getElementById("lon").value =  position.coords.longitude;
+                document.getElementById("submit").click();
+            }
+            
+            function handleError(error) {
+              console.log(error.code);
+            }
+            function getloc(){
+              var position = navigator.geolocation.getCurrentPosition(handleLocation, handleError);
+            }
+            
+          
+          </script>
+</body>
+</html>
